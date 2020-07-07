@@ -6,7 +6,26 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		357ABBA9240517BD005EF744 /* fat-library */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 357ABBAC240517BE005EF744 /* Build configuration list for PBXAggregateTarget "fat-library" */;
+			buildPhases = (
+				357ABBAF240517DA005EF744 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "fat-library";
+			productName = "fat-library";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F352408C0EE00AC60B4 /* libmediasoupclient.a */; };
+		3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F332408C0D500AC60B4 /* libsdptransform.a */; };
+		3519FB2024872D5600DD3AF5 /* libwebrtc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F372408C11000AC60B4 /* libwebrtc.a */; };
+		3519FB22248731D500DD3AF5 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3519FB21248731D400DD3AF5 /* WebRTC.framework */; };
+		3519FB23248731D500DD3AF5 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3519FB21248731D400DD3AF5 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		351A83222394A68700BA7A13 /* Transport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A83212394A68700BA7A13 /* Transport.mm */; };
 		351A83232394AD5C00BA7A13 /* Transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A83202394A4BA00BA7A13 /* Transport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		351A83242394AD5F00BA7A13 /* Mediasoupclient.h in Headers */ = {isa = PBXBuildFile; fileRef = 35EEA28023911D3B00134D1C /* Mediasoupclient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,7 +61,6 @@
 		3570311823977DF800761AF5 /* Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3570311723977DF800761AF5 /* Logger.mm */; };
 		3570311A23977E0F00761AF5 /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3570311923977E0F00761AF5 /* Logger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3570311C2397802C00761AF5 /* LoggerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3570311B2397802C00761AF5 /* LoggerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35C66C47238E7F21003C2E1E /* libwebrtc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C66C46238E7F21003C2E1E /* libwebrtc.a */; };
 		35D1722B238CFB4B00FAF301 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353BD1292387E23500A8734C /* UIKit.framework */; };
 		35D1722C238CFB4B00FAF301 /* UIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 353BD1292387E23500A8734C /* UIKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		35D1722D238CFB5000FAF301 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C61382387D96300986297 /* CoreAudio.framework */; };
@@ -55,14 +73,10 @@
 		35D762DD238CBA2C0033D7AD /* ConsumerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB248B238BA8920092EBCB /* ConsumerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35D762DE238CBA2E0033D7AD /* DeviceWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB248C238BA8C00092EBCB /* DeviceWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35D884F12397984800BA6764 /* mediasoup_client_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E2E47C2385284800E315FD /* mediasoup_client_ios.framework */; };
-		35D884F82397A07000BA6764 /* libmediasoupclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D884F72397A07000BA6764 /* libmediasoupclient.a */; };
-		35D884FA2397A08000BA6764 /* libsdptransform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D884F92397A08000BA6764 /* libsdptransform.a */; };
 		35EEA27923911B5D00134D1C /* MediasoupclientWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */; };
 		35EEA27E23911CB000134D1C /* Mediasoupclient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA27D23911CB000134D1C /* Mediasoupclient.mm */; };
 		35F7267E23A3260A009BCD7F /* RTCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F7267D23A3260A009BCD7F /* RTCUtils.m */; };
 		35F7268023A3261C009BCD7F /* RTCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 35F7267F23A3261C009BCD7F /* RTCUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35F7268F23A3311F009BCD7F /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; };
-		35F7269023A3311F009BCD7F /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* ProducerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* TransportWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -87,7 +101,7 @@
 				35256BF9239A4AA800E27BB3 /* CoreVideo.framework in Embed Frameworks */,
 				35256BF7239A4AA600E27BB3 /* CoreMedia.framework in Embed Frameworks */,
 				35D17230238CFB5100FAF301 /* AVFoundation.framework in Embed Frameworks */,
-				35F7269023A3311F009BCD7F /* WebRTC.framework in Embed Frameworks */,
+				3519FB23248731D500DD3AF5 /* WebRTC.framework in Embed Frameworks */,
 				35D1722E238CFB5000FAF301 /* CoreAudio.framework in Embed Frameworks */,
 				35D17232238CFB5300FAF301 /* AudioToolbox.framework in Embed Frameworks */,
 				35D1722C238CFB4B00FAF301 /* UIKit.framework in Embed Frameworks */,
@@ -98,6 +112,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3519FB21248731D400DD3AF5 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework"; sourceTree = "<group>"; };
 		351A83202394A4BA00BA7A13 /* Transport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transport.h; sourceTree = "<group>"; };
 		351A83212394A68700BA7A13 /* Transport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Transport.mm; sourceTree = "<group>"; };
 		351A832C2394B08E00BA7A13 /* Consumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consumer.h; sourceTree = "<group>"; };
@@ -123,7 +138,9 @@
 		353EA3DE23960C01000D5353 /* RecvTransportListenerImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecvTransportListenerImpl.m; sourceTree = "<group>"; };
 		353EA3E023960EBE000D5353 /* TransportTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportTests.m; sourceTree = "<group>"; };
 		353EA3E223963B6A000D5353 /* ProducerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProducerTests.m; sourceTree = "<group>"; };
-		3544B7E6238E604A00A6AA17 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework"; sourceTree = "<group>"; };
+		35516F332408C0D500AC60B4 /* libsdptransform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsdptransform.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libsdptransform.a"; sourceTree = "<group>"; };
+		35516F352408C0EE00AC60B4 /* libmediasoupclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmediasoupclient.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libmediasoupclient.a"; sourceTree = "<group>"; };
+		35516F372408C11000AC60B4 /* libwebrtc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebrtc.a; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal/libwebrtc.a"; sourceTree = "<group>"; };
 		355C61292387702600986297 /* ConsumerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConsumerWrapper.mm; sourceTree = "<group>"; };
 		355C613223877F2B00986297 /* ProducerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ProducerWrapper.mm; sourceTree = "<group>"; };
 		355C61362387995200986297 /* TransportWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TransportWrapper.mm; sourceTree = "<group>"; };
@@ -138,7 +155,7 @@
 		3570311723977DF800761AF5 /* Logger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Logger.mm; sourceTree = "<group>"; };
 		3570311923977E0F00761AF5 /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
 		3570311B2397802C00761AF5 /* LoggerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoggerWrapper.h; sourceTree = "<group>"; };
-		35C66C46238E7F21003C2E1E /* libwebrtc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebrtc.a; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal/libwebrtc.a"; sourceTree = "<group>"; };
+		357ABBB024052BAE005EF744 /* mediasoup_ios_client.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = mediasoup_ios_client.modulemap; sourceTree = "<group>"; };
 		35D171EE238CD51C00FAF301 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		35D1721C238CF9BB00FAF301 /* mediasoup-client-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mediasoup-client-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D17220238CF9BE00FAF301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,8 +164,6 @@
 		35D7427F2390B8AD00C22679 /* Device.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Device.mm; sourceTree = "<group>"; };
 		35D742822390EAE300C22679 /* Parameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parameters.m; sourceTree = "<group>"; };
 		35D742842390F0DF00C22679 /* Parameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameters.h; sourceTree = "<group>"; };
-		35D884F72397A07000BA6764 /* libmediasoupclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmediasoupclient.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libmediasoupclient.a"; sourceTree = "<group>"; };
-		35D884F92397A08000BA6764 /* libsdptransform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsdptransform.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libsdptransform.a"; sourceTree = "<group>"; };
 		35E2E47C2385284800E315FD /* mediasoup_client_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mediasoup_client_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E2E4802385284800E315FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupclientWrapper.mm; sourceTree = "<group>"; };
@@ -176,16 +191,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35C66C47238E7F21003C2E1E /* libwebrtc.a in Frameworks */,
+				3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */,
 				35256BF6239A4AA600E27BB3 /* CoreMedia.framework in Frameworks */,
-				35D884FA2397A08000BA6764 /* libsdptransform.a in Frameworks */,
-				35D884F82397A07000BA6764 /* libmediasoupclient.a in Frameworks */,
+				3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */,
 				35D1722F238CFB5100FAF301 /* AVFoundation.framework in Frameworks */,
 				35256BF1239A4A7800E27BB3 /* AudioToolbox.framework in Frameworks */,
 				35D1722B238CFB4B00FAF301 /* UIKit.framework in Frameworks */,
-				35F7268F23A3311F009BCD7F /* WebRTC.framework in Frameworks */,
 				35D17231238CFB5300FAF301 /* AudioToolbox.framework in Frameworks */,
+				3519FB22248731D500DD3AF5 /* WebRTC.framework in Frameworks */,
 				35256BF8239A4AA800E27BB3 /* CoreVideo.framework in Frameworks */,
+				3519FB2024872D5600DD3AF5 /* libwebrtc.a in Frameworks */,
 				35D1722D238CFB5000FAF301 /* CoreAudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +322,7 @@
 				350559B423A8CA1D00576D83 /* src */,
 				35EEA27F23911D2200134D1C /* include */,
 				35E2E4802385284800E315FD /* Info.plist */,
+				357ABBB024052BAE005EF744 /* mediasoup_ios_client.modulemap */,
 			);
 			path = "mediasoup-client-ios";
 			sourceTree = "<group>";
@@ -314,13 +330,13 @@
 		35E2E4892385289700E315FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3519FB21248731D400DD3AF5 /* WebRTC.framework */,
+				35516F372408C11000AC60B4 /* libwebrtc.a */,
+				35516F352408C0EE00AC60B4 /* libmediasoupclient.a */,
+				35516F332408C0D500AC60B4 /* libsdptransform.a */,
 				35256BF4239A4AA100E27BB3 /* CoreVideo.framework */,
 				35256BF2239A4A9B00E27BB3 /* CoreMedia.framework */,
 				3538C5542397A91A007EB078 /* libc++.tbd */,
-				35D884F92397A08000BA6764 /* libsdptransform.a */,
-				35D884F72397A07000BA6764 /* libmediasoupclient.a */,
-				35C66C46238E7F21003C2E1E /* libwebrtc.a */,
-				3544B7E6238E604A00A6AA17 /* WebRTC.framework */,
 				35D171EE238CD51C00FAF301 /* AVFoundation.framework */,
 				353BD1292387E23500A8734C /* UIKit.framework */,
 				355C61442387DA7B00986297 /* AVFoundation.framework */,
@@ -432,6 +448,9 @@
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Denvir Ethan";
 				TargetAttributes = {
+					357ABBA9240517BD005EF744 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					35D1721B238CF9BB00FAF301 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -456,6 +475,7 @@
 			targets = (
 				35E2E47B2385284800E315FD /* mediasoup-client-ios */,
 				35D1721B238CF9BB00FAF301 /* mediasoup-client-iosTests */,
+				357ABBA9240517BD005EF744 /* fat-library */,
 			);
 		};
 /* End PBXProject section */
@@ -471,6 +491,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		357ABBAF240517DA005EF744 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nFRAMEWORK_NAME=\"mediasoup-client-ios\"\nOUTPUT_DIR=\"${SRCROOT}/build\"\n\n# If the framework already exists delete it\nif [ -d \"${OUTPUT_DIR}\" ]; then\n    rm -rf \"${OUTPUT_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch arm64 only_active_arch=no -sdk \"iphoneos\" -derivedDataPath \"${OUTPUT_DIR}\"\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch x86_64 only_active_arch=no -sdk \"iphonesimulator\" -derivedDataPath \"${OUTPUT_DIR}\"\n\n# Remove framework file if it exists\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\" ]; then\n    rm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\"\nfi\n\n# Copy the device version of the framework\ncp -r \"${OUTPUT_DIR}/Build/Products/Release-iphoneos/mediasoup_client_ios.framework\" \"${OUTPUT_DIR}/mediasoup_client_ios.framework\"\n\n# Create the FAT framework\nlipo -create -output \"${OUTPUT_DIR}/mediasoup_client_ios.framework/mediasoup_client_ios\" \"${OUTPUT_DIR}/Build/Products/Release-iphoneos/mediasoup_client_ios.framework/mediasoup_client_ios\" \"${OUTPUT_DIR}/Build/Products/Release-iphonesimulator/mediasoup_client_ios.framework/mediasoup_client_ios\"\n";
+		};
 		35A708F3238FABC900BD3716 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -540,6 +577,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		357ABBAA240517BE005EF744 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G8EYG6ATY;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		357ABBAB240517BE005EF744 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G8EYG6ATY;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		35D17225238CF9BE00FAF301 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -747,6 +802,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALTERNATE_OWNER = denvirethan;
+				BITCODE_GENERATION_MODE = marker;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -796,8 +852,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
+					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 				);
+				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
+				MODULEMAP_PRIVATE_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode-marker";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-stdlib=libc++",
@@ -828,6 +888,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALTERNATE_OWNER = denvirethan;
+				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -877,8 +938,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
+					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 				);
+				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
+				MODULEMAP_PRIVATE_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-stdlib=libc++",
@@ -907,6 +972,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		357ABBAC240517BE005EF744 /* Build configuration list for PBXAggregateTarget "fat-library" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				357ABBAA240517BE005EF744 /* Debug */,
+				357ABBAB240517BE005EF744 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		35D17224238CF9BE00FAF301 /* Build configuration list for PBXNativeTarget "mediasoup-client-iosTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -19,7 +19,7 @@
 #import "Logger.h"
 
 @interface ConsumerTests : XCTestCase<ConsumerListener>
-@property(nonatomic, strong) Device *device;
+@property(nonatomic, strong) MediasoupDevice *device;
 @property(nonatomic, strong) RecvTransport *recvTransport;
 @property(nonatomic, strong) Consumer *consumer;
 @property(nonatomic, assign) id delegate;
@@ -32,7 +32,7 @@
     
     [Mediasoupclient initializePC];
     
-    self.device = [[Device alloc] init];
+    self.device = [[MediasoupDevice alloc] init];
     [self.device load:[Parameters generateRouterRtpCapabilities]];
 
     NSDictionary *remoteTransportParameters = [Parameters generateTransportRemoteParameters];
@@ -87,6 +87,11 @@
 -(void)testGetTrack {
     XCTAssertNotNil([self.consumer getTrack]);
     XCTAssertTrue([[[self.consumer getTrack] kind] isEqualToString:@"audio"]);
+}
+
+-(void)testTransportClose {
+    [self.recvTransport close];
+    XCTAssertTrue([self.consumer isClosed]);
 }
 
 -(void)testGetRtpParameters {

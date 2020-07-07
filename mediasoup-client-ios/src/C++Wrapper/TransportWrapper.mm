@@ -118,7 +118,7 @@ using namespace mediasoupclient;
     return [NSValue valueWithPointer:[TransportWrapper extractNativeTransport:nativeTransport]];
 }
 
-+(NSValue *)nativeProduce:(NSValue *)nativeTransport listener:(id<ProducerListener>)listener track:(NSUInteger)mediaTrack encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
++(::Producer *)nativeProduce:(NSValue *)nativeTransport listener:(id<ProducerListener>)listener track:(NSUInteger)mediaTrack encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
@@ -158,10 +158,19 @@ using namespace mediasoupclient;
         }
         
         mediasoupclient::SendTransport *transport = reinterpret_cast<mediasoupclient::SendTransport *>([nativeTransport pointerValue]);
-        mediasoupclient::Producer *producer = transport->Produce(producerListener, mediaStreamTrack, &encodingsVector, &codecOptionsJson, appDataJson);
-        OwnedProducer *ownedProducer = new OwnedProducer(producer, producerListener);
         
-        return [NSValue valueWithPointer:ownedProducer];
+        mediasoupclient::Producer *nativeProducer;
+        
+        // Prevent sdp error when called at the same time on multiple threads (a=mid)
+        @synchronized (self) {
+            nativeProducer = transport->Produce(producerListener, mediaStreamTrack, &encodingsVector, &codecOptionsJson, appDataJson);
+        }
+        
+        OwnedProducer *ownedProducer = new OwnedProducer(nativeProducer, producerListener);
+        ::Producer *producer = [[::Producer alloc] initWithNativeProducer:[NSValue valueWithPointer:ownedProducer]];
+        producerListener->SetProducer(producer);
+        
+        return producer;
     } catch (std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];
@@ -173,7 +182,7 @@ using namespace mediasoupclient;
     }
 }
 
-+(NSValue *)nativeConsume:(NSValue *)nativeTransport listener:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
++(::Consumer *)nativeConsume:(NSValue *)nativeTransport listener:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
@@ -194,11 +203,18 @@ using namespace mediasoupclient;
         }
         
         mediasoupclient::RecvTransport *transport = reinterpret_cast<mediasoupclient::RecvTransport *>([nativeTransport pointerValue]);
-        mediasoupclient::Consumer *nativeConsumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
         
-        OwnedConsumer *consumer = new OwnedConsumer(nativeConsumer, consumerListener);
+        mediasoupclient::Consumer *nativeConsumer;
         
-        return [NSValue valueWithPointer:consumer];
+        @synchronized(self) {
+            nativeConsumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
+        }
+        
+        OwnedConsumer *ownedConsumer = new OwnedConsumer(nativeConsumer, consumerListener);
+        ::Consumer *consumer = [[::Consumer alloc] initWithNativeConsumer:[NSValue valueWithPointer:ownedConsumer]];
+        consumerListener->SetConsumer(consumer);
+        
+        return consumer;
     } catch (std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];

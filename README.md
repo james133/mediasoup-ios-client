@@ -16,19 +16,31 @@ Objective-C wrapper library for libmediasoupclient for building mediasoup iOS ba
 
 ## Getting Started
 
-### Download the required frameworks
+### Cocoapods
 
-* mediasoup-ios-client Framework: https://www.dropbox.com/s/7mz09tza4xbrwta/mediasoup_client_ios.framework.zip
-* WebRTC.framework: https://www.dropbox.com/s/qmqodqf4slsmvk5/WebRTC.framework.zip
+Add the below into your Podfile:
 
-Extract the frameworks and place them in your projects [Frameworks] folder.
-You may need to configure your projects search paths
+```ruby
+use_frameworks!
+
+target "target" do
+  pod "mediasoup_ios_client"
+end
+```
+
+**You will need to set enable bitcode to false**
+
+Due to the size of the WebRTC.framework with bitcode, it cannot be uploaded to Github.
 
 **Swift users will need to implement a Objective-C Bridging Header**
 
+Bridging header sample:
+
+https://github.com/ethand91/mediasoup-ios-client-sample/blob/master/mediasoup-ios-cient-sample/mediasoup-ios-cient-sample-Bridging-Header.h
+
 ## Documentation
 
-(Coming Soon)
+Documentation including API doc is located in the documentation folder.
 
 ## Usage Example
 
@@ -39,7 +51,7 @@ You may need to configure your projects search paths
 [Mediasoupclient initializePC];
 
 // Create a Device
-Device *device = [[Device alloc] init];
+MediasoupDevice *device = [[MediasoupDevice alloc] init];
 
 // Communicate with our server app to retrieve router RTP capabilities
 NSString *routerRtpCapabilities = [mySignalling request:@"getRouterRtpCapabilities"];
@@ -71,11 +83,11 @@ NSDictionary *transportData = [mySignalling request:@"createTransport"];
  NSLog(@"sendTransport::onConnectionStateChange newState = %@", connectionState);
 }
 
--(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
+-(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData callback:(void(^)(NSString *))callback {
  // Here we must communicate our local parameters to our remote transport
  NSString *id = [mySignalling request:@"produce" transportId:[transport getId] kind:kind rtpParameters:rtpParameters appData:appData];
  
- return id;
+ callback(id);
 }
 @end
 
@@ -112,28 +124,11 @@ Producer *videoProducer = [sendTransport produce:producerHandler.delegate track:
 
 ### Clone the repo and install submodules
 
+Due to the size of the WebRTC static library it cannot be uploaded to Github, therefore you will need to follow the instructions in the build folder and build it yourself. (This step is only needed for development, not for library usage)
+
 ```bash
 git clone https://github.com/ethand91/mediasoup-ios-client.git
 submodule init
 submodule update
 ```
-
-### Get the libraries
-
-Due to the libwebrtc.a library being to big to upload to github, you will need to either:
-
-* Follow the instructions located in the build directory
-* Download the compiled libraries from an external provider
-
-Previously built libraries can be found below:
-
-* libmediasoupclient.a (arm64,x86_64): https://www.dropbox.com/s/8u1vvoutzcfqhhg/libmediasoupclient.a
-* libsdptransform.a (arm64, x86_64): https://www.dropbox.com/s/jbk30y56dckjwj2/libsdptransform.a
-* libwebrtc.a (arm64, x86_64): https://www.dropbox.com/s/sxnhub3p07hgtt5/libwebrtc.a
-* WebRTC.framework (m74 branch): https://www.dropbox.com/s/qmqodqf4slsmvk5/WebRTC.framework.zip
-
-The default library paths are as follows: (if you change the directory of the libraries make sure to update the relevant search paths):
-* libmediasoupclient.a/libsdptransform.a - dependencies/libmediasoupclient/lib
-* libwebrtc.a - dependencies/webrtc/src/out_ios_libs/universal
-* WebRTC.framework - dependencies/webrtc/src/out_ios_libs/
  

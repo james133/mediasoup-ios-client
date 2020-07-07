@@ -20,10 +20,11 @@
 #import "utils/util.h"
 
 @interface ProducerTests : XCTestCase<ProducerListener>
-@property (nonatomic, strong) Device *device;
+@property (nonatomic, strong) MediasoupDevice *device;
 @property (nonatomic, strong) SendTransport *sendTransport;
 @property (nonatomic, strong) Producer *producer;
 @property (nonatomic, strong) RTCAudioTrack *track;
+@property (nonatomic, strong) RTCAudioTrack *secondTrack;
 @property (nonatomic, assign) id delegate;
 @end
 
@@ -34,7 +35,7 @@
     
     [Mediasoupclient initializePC];
     
-    self.device = [[Device alloc] init];
+    self.device = [[MediasoupDevice alloc] init];
     [self.device load:[Parameters generateRouterRtpCapabilities]];
 
     NSDictionary *remoteTransportParameters = [Parameters generateTransportRemoteParameters];
@@ -74,10 +75,23 @@
     XCTAssertTrue([self.producer.getKind isEqualToString:@"audio"]);
 }
 
+-(void)testGetRtpParameters {
+    XCTAssertNotNil([self.producer getRtpParameters]);
+}
+
+-(void)testGetAppData {
+    XCTAssertNotNil([self.producer getAppData]);
+}
+
 -(void)testGetTrack {
     RTCMediaStreamTrack *track = [self.producer getTrack];
     XCTAssertNotNil(track);
     XCTAssertTrue([[track kind] isEqualToString:@"audio"]);
+}
+
+-(void)testTransportClose {
+    [self.sendTransport close];
+    XCTAssertTrue([self.producer isClosed]);
 }
 
 -(void)testNotPaused {
@@ -103,9 +117,9 @@
 
 -(void)testReplaceTrack {
     RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
-    RTCAudioTrack *newTrack = [factory audioTrackWithTrackId:@"new"];
+    self.secondTrack = [factory audioTrackWithTrackId:@"new"];
     
-    [self.producer replaceTrack:newTrack];
+    [self.producer replaceTrack:self.secondTrack];
     XCTAssertTrue([[self.producer getTrack].trackId isEqualToString:@"new"]);
 }
 

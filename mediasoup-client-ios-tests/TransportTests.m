@@ -17,7 +17,7 @@
 #import "utils/util.h"
 
 @interface TransportTests : XCTestCase<SendTransportListener, RecvTransportListener, ProducerListener>
-@property (nonatomic, strong) Device *device;
+@property (nonatomic, strong) MediasoupDevice *device;
 @property (nonatomic, strong) SendTransport *sendTransport;
 @property (nonatomic, strong) RecvTransport *recvTransport;
 @property (nonatomic, strong) NSString *connectionState;
@@ -31,7 +31,7 @@
 
 - (void)setUp {
     [super setUp];
-    self.device = [[Device alloc] init];
+    self.device = [[MediasoupDevice alloc] init];
     [self.device load:[Parameters generateRouterRtpCapabilities]];
 
     NSDictionary *remoteTransportParameters = [Parameters generateTransportRemoteParameters];
@@ -103,11 +103,12 @@
     self.track = [factory audioTrackWithTrackId:@"dsdasdsa"];
     self.producerDelegate = self;
     
+    // TODO
     RTCRtpEncodingParameters *encoding1 = [RTCUtils genRtpEncodingParameters:true maxBitrateBps:500000 minBitrateBps:0 maxFramerate:60 numTemporalLayers:0 scaleResolutionDownBy:0.0];
     
     self.encodings = @[encoding1];
     
-    Producer *producer = [self.sendTransport produce:self.delegate track:self.track encodings:self.encodings codecOptions:nil];
+    Producer *producer = [self.sendTransport produce:self.delegate track:self.track encodings:nil codecOptions:nil];
     XCTAssertNotNil(producer);
 }
 
@@ -128,12 +129,14 @@
     self.connectionState = connectionState;
 }
 
--(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
-    return @"id";
-}
-
 - (void)onTransportClose:(Producer *)producer {
     
+}
+
+- (void)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData callback:(void (^)(NSString *))callback {
+    NSLog(@"Test %@", callback);
+    
+    callback(@"id");
 }
 
 @end
